@@ -13,10 +13,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -26,7 +22,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+
 import {
   Table,
   TableBody,
@@ -35,6 +31,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Button } from './button'
+import { Checkbox } from './checkbox'
+import { IconChevronDown, IconSelector } from '@tabler/icons-react'
+import { Input } from './input'
 
 const data: Payment[] = [
   {
@@ -69,21 +69,30 @@ export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
     header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
+      <div className='w-12 h-10 pl-4 py-3'>
+        <Checkbox
+      className=''
+      checked={
+        table.getIsAllPageRowsSelected() ||
+        (table.getIsSomePageRowsSelected() && "indeterminate")
+      
+      }
+      onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+      aria-label="Select all"
+    />
+      </div>
+
+
     ),
     cell: ({ row }) => (
-      <Checkbox
+     <div className='w-12 h-10 pl-4 py-3'>
+       <Checkbox
+        className=''
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
       />
+     </div>
     ),
     enableSorting: false,
     enableHiding: false,
@@ -92,7 +101,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize w-[128px] h-10 py-2.5">{row.getValue("status")}</div>
     ),
   },
   {
@@ -100,29 +109,29 @@ export const columns: ColumnDef<Payment>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+  variant="ghost"
+  onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  className="w-89 h-10  text-neutral-950 justify-start"
+>
+  Email
+  <IconSelector className="size-4 text-neutral-950" />
+</Button>
+
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="lowercase w-89 h-10 py-2.5 font-normal font-inter">{row.getValue("email")}</div>,
   },
   {
     accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    header: () => <div className="pr-4 text-right  text-neutral-950 ">Amount</div>,
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"))
-
-      // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
       }).format(amount)
 
-      return <div className="text-right font-medium">{formatted}</div>
+      return <div className="text-right font-medium py-2.5 font-inter pr-4 w-90 h-10">{formatted}</div>
     },
   },
   {
@@ -133,10 +142,9 @@ export const columns: ColumnDef<Payment>[] = [
 
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+          <DropdownMenuTrigger asChild className=''>
+            <Button variant="ghost" className="w-12 h-10">
               <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -156,7 +164,7 @@ export const columns: ColumnDef<Payment>[] = [
   },
 ]
 
-export function DataTableDemo() {
+export function DataTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -185,20 +193,20 @@ export function DataTableDemo() {
   })
 
   return (
-    <div className="w-[610px]">
-      <div className="flex items-center py-4">
+    <div className="w-91">
+      <div className="flex items-center py-4 ">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Filter emails"
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="w-92 h-9 placeholder:text-neutral-400 border border-neutral-200 font-inter"
         />
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
+          <DropdownMenuTrigger asChild className=''>
+            <Button variant="outline" className="ml-auto w-93 font-inter text-neutral-950 ">
+              Columns <IconChevronDown className="size-4 text-neutral-500" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -222,14 +230,14 @@ export function DataTableDemo() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-lg  squircle">
-        <Table>
+      <div className="rounded-lg squircle">
+        <Table className=''>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className='bg-neutral-50 squircle'>
+              <TableRow key={headerGroup.id} className='bg-neutral-50'>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className='text-neutral-950 font-inter'>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -248,10 +256,10 @@ export function DataTableDemo() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className=''
+                  className='font-inter'
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className=''>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -273,8 +281,8 @@ export function DataTableDemo() {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
+      <div className="flex items-center font-inter h-8 justify-between mt-4">
+        <div className="w-94  text-sm text-neutral-400">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
@@ -284,6 +292,7 @@ export function DataTableDemo() {
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
+            className='w-95 text-xs'
           >
             Previous
           </Button>
@@ -291,7 +300,7 @@ export function DataTableDemo() {
             variant="outline"
             size="sm"
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
+            className='w-43 text-xs text-neutral-950'
           >
             Next
           </Button>

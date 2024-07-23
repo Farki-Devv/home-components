@@ -6,10 +6,10 @@ const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="relative w-full overflow-auto">
+  <div className="relative overflow-auto">
     <table
       ref={ref}
-      className={cn("w-full caption-bottom text-sm ", className)}
+      className={cn("w-full caption-bottom text-sm", className)}
       {...props}
     />
   </div>
@@ -20,7 +20,7 @@ const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("[&_tr]:border-b ", className)} {...props} />
+  <thead ref={ref} className={cn("", className)} {...props} />
 ))
 TableHeader.displayName = "TableHeader"
 
@@ -43,7 +43,7 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "border-t  bg-muted/50 font-medium [&>tr]:last:border-b-0",
+      "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
       className
     )}
     {...props}
@@ -58,7 +58,7 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "border-b  h-10 transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "border-b border-neutral-200 h-10 transition-colors hover:bg-neutral-50 data-[state=selected]:bg-muted",
       className
     )}
     {...props}
@@ -73,7 +73,7 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "h-10 px-4  text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
+      "h-10 text-left align-middle font-medium text-muted-foreground",
       className
     )}
     {...props}
@@ -84,10 +84,11 @@ TableHead.displayName = "TableHead"
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
   React.TdHTMLAttributes<HTMLTableCellElement>
->(({ className, ...props }, ref) => (
+>(({ className, style, ...props }, ref) => (
   <td
     ref={ref}
-    className={cn("h-10 pl-4 pr-3 align-middle  ", className)}
+    className={cn("h-10 pt-0 pb-0 align-middle ", className)}
+    style={{ width: "128px", height:"40px", ...style }}
     {...props}
   />
 ))

@@ -13,7 +13,7 @@ export type CalendarProps = React.ComponentProps<typeof DayPicker> & {
 	className?: string
 }
 
-function Calendar({
+function DemoCalendar({
   className,
   classNames,
   showOutsideDays = true,
@@ -22,28 +22,28 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn("border rounded-lg w-256 h-73  px-4 py-4", className)}
+      className={cn("", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        month: "space-y-4",
-        caption: "flex justify-center justify-center relative items-center w-29 h-8",
+        month: "space-y-4 border w-[256px] rounded-lg h-[328px] px-4 py-4",
+        caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
+        nav: " flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "size-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
-        table: "w-full w-29 h-99",
-        head_row: "flex border-b w-29 h-5",
+        table: " border-collapse",
+        head_row: "flex",
         head_cell:
-          "text-muted-foreground rounded-md w-9 h-5 font-normal text-xs",
-        row: "flex w-full mt-1 w-29 ",
-        cell: "size-8 text-center text-sm p-0 relative focus-within:relative focus-within:z-20",
+          "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+        row: "flex w-full mt-2",
+        cell: "h-8 w-8 border text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "size-8 font-normal aria-selected:opacity-100"
+          "h-9 w-9 p-0 font-normal aria-selected:opacity-100"
         ),
         day_range_end: "day-range-end",
         day_selected:
@@ -65,6 +65,6 @@ function Calendar({
     />
   )
 }
-Calendar.displayName = "Calendar"
+DemoCalendar.displayName = "Calendar"
 
-export { Calendar }
+export { DemoCalendar }

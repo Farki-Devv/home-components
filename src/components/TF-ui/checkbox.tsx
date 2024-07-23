@@ -1,13 +1,45 @@
-
+/**
+ * @file checkbox.tsx Checbox
+ * @overview A control that allows the user to toggle between checked and not checked.
+ * @example
+ * ```tsx
+ * import { Checkbox } from './components/TF-ui/checkbox'
+ * 
+ * <Checkbox />
+ * ```
+ * @require "@radix-ui/react-checkbox": "^1.1.1"- npm i @radix-ui/react-checkbox@1.1.1
+ * @require  "@tabler/icons-react": "^3.11.0", - npm i @tabler/icons-react@3.11.0
+ */
+/**
+ * @license checkbox.tsx
+ */
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import { Check } from 'lucide-react'
 import * as React from 'react'
-
 import { cn } from '@/lib/utils'
+import { IconCheck } from '@tabler/icons-react'
+
+/**
+ * @interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> for Checkbox component
+ * @property {string} className Optional additional class names for custom styles
+ */
 interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
 	className?:string
 }
+/**
+ * A control that allows the user to toggle between checked and not checked.
+ * @param {CheckboxProps} props Interface for adjusting the checkbox component.
+ * @param {React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>} ref A reference to a DOM element
+ * @param {string} className Optional additional class names for custom styles
+ * @param {object} props to receive props
+ * @returns {JSX.Element} Returns the Checkbox component
+ * @example
+ * ```tsx
+ * import { Checkbox } from './components/TF-ui/checkbox'
+ * 
+ * <Checkbox />	
+ * ```
+ */
 const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(({className ,...props}, ref)=>(
 	<CheckboxPrimitive.Root
 	ref={ref}
@@ -17,10 +49,10 @@ const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root
 		<CheckboxPrimitive.Indicator 
 		className={cn('flex items-center justify-center text-current')}
 		>
-			<Check className='size-2'/>
+			<IconCheck className='size-2'/>
 		</CheckboxPrimitive.Indicator>
 	</CheckboxPrimitive.Root>
 ))
 Checkbox.displayName = CheckboxPrimitive.Root.displayName
-
+export type { CheckboxProps }
 export { Checkbox }
