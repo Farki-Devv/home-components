@@ -28,6 +28,9 @@ import { IconChevronDown, IconCircle } from '@tabler/icons-react'
 
 // input component, but I haven't changed the input component of this shadcn ui yet
 import { Input } from './components/TF-ui/input'
+import { Drawer,  DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from './components/TF-ui/drawer'
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from './components/TF-ui/pagination'
+import { Slider } from './components/TF-ui/slider'
 
 function App() {
   React.useEffect(() => {
@@ -204,7 +207,53 @@ function App() {
      
      </div>
  
+   <div >
+    {/* Drawer component */}
+    {/* <Drawer>
+  <DrawerTrigger>Open</DrawerTrigger>
+  <DrawerContent>
+    <DrawerHeader>
+      <DrawerTitle>Title</DrawerTitle>
+      <DrawerDescription>Subtitle</DrawerDescription>
+    </DrawerHeader>
+    <DrawerFooter>
+      <Button className='float-right w-[60px] h-9 rounded-lg'>Done</Button>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer> */}
 
+   </div>
+
+   <div>
+    {/* pagination component */}
+    {/* <Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" >1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>2</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" >3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination> */}
+
+   </div>
+
+   <div className='w-[380px]'>
+   <Slider/>
+   </div>
 </div>
 
 

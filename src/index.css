@@ -94,7 +94,7 @@
 
   /* Alert component */
   .squircle {
-    --squircle-radius-left-top: 8px;
+    --squircle-radius: 8px;
     position: relative;
     &>* {
       position: relative;
