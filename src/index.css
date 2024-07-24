@@ -174,7 +174,7 @@
  background: hsl(var(--border));
  mask: paint(squircle);
  --squircle-outline: 1px;
- --border: 0 0% 89.8%
+
   }
 }
  .squircle-secondary {
