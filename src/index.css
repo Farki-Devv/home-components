@@ -114,6 +114,41 @@
     }
   }
   
+  /* checkbox component */
+  .squircle-check {
+    --squircle-radius: 8px;
+    position: relative;
+  }
+  
+  .squircle-check > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .squircle-check::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsl(var(--border));
+    mask: paint(squircle);
+    --squircle-outline: 1px;
+    --border: 0 0% 89.8%;
+  }
+  
+  .squircle-check[data-state="checked"] {
+    mask: paint(squircle);
+    background-color: blue;
+  }
+
+  .squircle-default{
+  --border-radius: 8px; 
+  width: 200px; 
+  height: 100px; 
+  mask: paint(squircle)
+   
 }
  .squircle-destructive{
   --squircle-radius: 8px;
@@ -137,6 +172,13 @@
   
  }
 
+ .squircle-destructive-btn{
+  --border-radius: 8px; 
+  width: 200px; 
+  height: 100px; 
+  mask: paint(squircle)
+ }
+
  .squircle-outline {
   --squircle-radius: 8px;
   position: relative;
@@ -157,45 +199,18 @@
  --border: 0 0% 89.8%
   }
 }
-.squircle-default {
-  --squircle-radius: 8px;
-  position: relative;
-  &>* {
-    position: relative;
-    z-index:1;
-  }
-  &:after {
- content: "";
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- background: hsl(var(--border));
- mask: paint(squircle);
- --squircle-outline: 1px;
 
-  }
-}
  .squircle-secondary {
-  --squircle-radius: 8px;
-  position: relative;
-  &>* {
-    position: relative;
-    z-index:1;
-  }
-  &:after {
- content: "";
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- background: hsl(var(--border));
- mask: paint(squircle);
- --squircle-outline: 1px;
- --border: none
-  }
+  --border-radius: 8px; 
+  width: 200px; 
+  height: 100px; 
+  mask: paint(squircle)
+}
+.squircle-ghost{
+  --border-radius: 8px; 
+  width: 200px; 
+  height: 100px; 
+  mask: paint(squircle)
 }
 .squircle-destructive-badge{
   --squircle-radius: 8px;
@@ -221,3 +236,4 @@
 
 
  
+}

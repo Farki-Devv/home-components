@@ -43,7 +43,7 @@ interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPr
 const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(({className ,...props}, ref)=>(
 	<CheckboxPrimitive.Root
 	ref={ref}
-	className={cn("peer size-4 shrink-0 rounded-sm  border-neutral-200 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 squircle data-[state=checked]:bg-blue-800 data-[state=checked]:border-none text-white", className)}
+	className={cn("peer size-4 shrink-0 rounded-sm  border-neutral-200 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 squircle-check  data-[state=checked]:border-none text-white", className)}
 	{...props}
 	>
 		<CheckboxPrimitive.Indicator 

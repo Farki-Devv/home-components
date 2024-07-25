@@ -33,7 +33,7 @@ const buttonVariants = cva("inline-flex items-center justify-center rounded-lg t
 				secondary:"bg-neutral-100 text-neutral-950 hover:bg-neutral-50 focus:ring focus:ring-blue-800-24  active:bg-neutral-100 disabled:bg-neutral-100 squircle-secondary",
 				destructive:"bg-red-800 text-white hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-800-16 active:bg-red-900 disabled:bg-red-800 squircle-destructive-btn",
 				outline:"bg-white hover:bg-neutral-50 focus:outline-none focus:ring   text-neutral-950 focus:ring-blue-800-16 active:bg-neutral-100 squircle",
-				ghost:"hover:bg-neutral-50 hover:text-accent-foreground active:bg-neutral-0",
+				ghost:"hover:bg-neutral-50 hover:text-accent-foreground active:bg-neutral-0 squircle-ghost",
 			},
 			size:{
 				lg:"h-10 w-33 px-4 py-2 text-base",

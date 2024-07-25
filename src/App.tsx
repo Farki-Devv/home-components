@@ -10,12 +10,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 // carousel component
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/TF-ui/carousel'
 
-// calendar component
-import { Calendar } from './components/TF-ui/calendar'
-
-
-// data table component
-import { DataTable } from './components/TF-ui/data-table'
 
 // button component
 import { Button } from './components/TF-ui/button'
@@ -28,27 +22,40 @@ import { IconChevronDown, IconCircle } from '@tabler/icons-react'
 
 // input component, but I haven't changed the input component of this shadcn ui yet
 import { Input } from './components/TF-ui/input'
+
+// Drawer component
 import { Drawer,  DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from './components/TF-ui/drawer'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from './components/TF-ui/pagination'
+
+// Slider component
 import { Slider } from './components/TF-ui/slider'
+
+// dropdown component
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuTrigger,DropdownMenuSubContent, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem } from './components/TF-ui/dropdown'
+
 
 function App() {
   React.useEffect(() => {
     (CSS as any).paintWorklet.addModule("squircle.min.js");
   }, []);
 
+  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
+  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
+  const [showPanel, setShowPanel] = React.useState<Checked>(false)
+
+  const [position, setPosition] = React.useState("bottom")
   return (
     <>
-<div className='max-w-7xl mx-auto'>
+<div className='max-w-7xl mx-auto flex flex-col gap-10'>
 
 
 
 
-<div className='ml-10 mt-2 space-y-2'>
+<div className='ml-10 mt-2 space-y-4'>
   {/* <Breadcrumb> */}
 
 
-{/* <Breadcrumb>
+<div className='space-y-4'>
+<Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
       <BreadcrumbLink href="/" className='w-10 '>Home</BreadcrumbLink>
@@ -94,7 +101,8 @@ function App() {
       <BreadcrumbPage className='w-15'>Current Page</BreadcrumbPage>
     </BreadcrumbItem>
   </BreadcrumbList>
-</Breadcrumb> */}
+</Breadcrumb>
+</div>
 </div>
 
 
@@ -103,7 +111,7 @@ function App() {
 
 <div className='ml-10'>
   {/* <Card> */}
-{/* <Card className='w-[320px] h-[184px] rounded-lg'>
+<Card className='w-[320px] h-[184px] rounded-lg'>
   <CardHeader>
     <CardTitle>Title</CardTitle>
     <CardDescription>Subtitle</CardDescription>
@@ -116,11 +124,11 @@ function App() {
     <Button className='w-[60px] text-white'>Done</Button>
 
   </CardFooter>
-</Card> */}
+</Card>
 </div>
 
 <div className='ml-14'>
-{/* <Carousel className="w-full max-w-[370px]">
+<Carousel className="w-full max-w-[370px]">
       <CarouselContent>
         {Array.from({ length: 2 }).map((_, index) => (
           <CarouselItem key={index} >
@@ -136,26 +144,17 @@ function App() {
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />
-    </Carousel> */}
+    </Carousel>
 </div>
 
-
-    <div className='ml-2 mt-10 w-[900px]'>
-        {/* calendar component */}
-        {/* <Calendar/> */}
-    </div>
 
 
     <div className='ml-10 mt-10'>
       {/* checkbox component */}
-      {/* <Checkbox/> */}
+      <Checkbox/>
     </div>
 
 
-     <div className='ml-20 '>
-    {/* Data table component */}
-    {/* <DataTable/> */}
-    </div>
 
 
 
@@ -171,45 +170,45 @@ function App() {
       {/* Button component */}
 
       {/* size lg */}
-      {/* <div className='flex gap-2 px-3'>
+      <div className='flex gap-2 px-3'>
       <Button size={'lg'} variant={'default'}><IconCircle className='size-5'/>Button <IconCircle className='size-5'/></Button>
       <Button size={'lg'} variant={'secondary'}><IconCircle className='size-5'/>Button <IconCircle className='size-5'/></Button> <Button size={'lg'} variant={'destructive'}><IconCircle className='size-5'/>Button <IconCircle className='size-5'/></Button> <Button size={'lg'} variant={'outline'}><IconCircle className='size-5'/>Button <IconCircle className='size-5'/></Button> <Button size={'lg'} variant={'ghost'}><IconCircle className='size-5'/>Button <IconCircle className='size-5'/></Button>
-      </div> */}
+      </div>
 
      {/* size default */}
-     {/* <div className='flex gap-8'>
+     <div className='flex gap-8'>
       <Button variant={'default'}><IconCircle className='size-4'/>Button<IconCircle className='size-4'/></Button>
       <Button variant={'secondary'}><IconCircle/>Button<IconCircle/></Button>
       <Button variant={'destructive'}><IconCircle/>Button<IconCircle/></Button>
       <Button variant={'outline'}><IconCircle/>Button<IconCircle/></Button>
       <Button variant={'ghost'}><IconCircle/>Button<IconCircle/></Button>
-     </div> */}
+     </div>
 
     {/* size sm */}
-     {/* <div className='flex gap-11'>
+     <div className='flex gap-11'>
       <Button size={'sm'} variant={'default'}><IconCircle/>Button <IconCircle/></Button>
       <Button size={'sm'} variant={'secondary'}><IconCircle/>Button<IconCircle/></Button>
       <Button size={'sm'} variant={'destructive'}><IconCircle/>Button<IconCircle/></Button>
       <Button size={'sm'} variant={'outline'}><IconCircle/>Button<IconCircle/></Button>
       <Button size={'sm'} variant={'ghost'}><IconCircle/>Button<IconCircle/></Button>
-     </div> */}
+     </div>
 
 
      {/* size icon */}
 
-     {/* <div className='flex gap-24'>
+     <div className='flex gap-24'>
       <Button size={'icon'} variant={'default'}><IconCircle className='size-5'/></Button>
       <Button size={'icon'} variant={'secondary'}><IconCircle className='size-5'/></Button>
       <Button size={'icon'} variant={'destructive'}><IconCircle className='size-5'/></Button>
       <Button size={'icon'} variant={'outline'}><IconCircle className='size-5'/></Button>
       <Button size={'icon'} variant={'ghost'}><IconCircle className='size-5'/></Button>
-     </div> */}
+     </div>
      
      </div>
  
    <div >
     {/* Drawer component */}
-    {/* <Drawer>
+    <Drawer>
   <DrawerTrigger>Open</DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
@@ -220,39 +219,141 @@ function App() {
       <Button className='float-right w-[60px] h-9 rounded-lg'>Done</Button>
     </DrawerFooter>
   </DrawerContent>
-</Drawer> */}
+</Drawer>
 
    </div>
 
-   <div>
-    {/* pagination component */}
-    {/* <Pagination>
-  <PaginationContent>
-    <PaginationItem>
-      <PaginationPrevious href="#" />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#" >1</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#" isActive>2</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationLink href="#" >3</PaginationLink>
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationEllipsis />
-    </PaginationItem>
-    <PaginationItem>
-      <PaginationNext href="#" />
-    </PaginationItem>
-  </PaginationContent>
-</Pagination> */}
-
-   </div>
 
    <div className='w-[380px]'>
+    {/* Slider component */}
    <Slider/>
+   </div>
+
+   <div className='flex gap-10 ml-20 mt-4'>
+   <div >
+    {/* Dropdown Menu */}
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-64">
+        <DropdownMenuLabel className='h-9'>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <span>Profile</span>
+            <DropdownMenuShortcut>⇧ ⌘ P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <span>Billing</span>
+            <DropdownMenuShortcut>⌘ B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <span>Settings</span>
+            <DropdownMenuShortcut>⌘ S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <span>Keyboard shortcuts</span>
+            <DropdownMenuShortcut>⌘ K</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <span>Team</span>
+          </DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <span>Invite users</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>
+                  <span>Email</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>Message</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+
+                  <span>More...</span>
+                </DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuItem>
+            <span>New Team</span>
+            <DropdownMenuShortcut>⌘ + T</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <span>GitHub</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <span>Support</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem disabled>
+
+          <span>API</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <span>Log out</span>
+          <DropdownMenuShortcut>⇧ ⌘ Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+   </div>
+
+   <div >
+    {/* two dropdown menu */}
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-64 h-40">
+        <DropdownMenuLabel className='h-9'>Appearance</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuCheckboxItem
+          checked={showStatusBar}
+          onCheckedChange={setShowStatusBar}
+        >
+          Status Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showActivityBar}
+          onCheckedChange={setShowActivityBar}
+          disabled
+        >
+          Activity Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showPanel}
+          onCheckedChange={setShowPanel}
+        >
+          Panel
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+   </div>
+   <div>
+   <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-64">
+        <DropdownMenuLabel className='h-9'>Panel Position</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+          <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+   </div>
    </div>
 </div>
 

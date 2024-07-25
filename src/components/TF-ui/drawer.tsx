@@ -89,7 +89,7 @@ const DrawerClose = DrawerPrimitive.Close
  * @returns {JSX.Element} Returns the DrawerOverlay component
  */
 const DrawerOverlay = React.forwardRef<React.ElementRef<typeof DrawerPrimitive.Overlay>, DrawerOverlayProps>(({className, ...props}, ref)=>(
-	<DrawerPrimitive.Overlay ref={ref} className={cn("fixed inset-0 z-50 bg-neutral-300 ", className)} 
+	<DrawerPrimitive.Overlay ref={ref} className={cn("fixed  inset-0 z-50 bg-neutral-300 ", className)} 
 	{...props}
 	/>
 ))
@@ -111,7 +111,7 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed bottom-2	  z-50 inset-x-2 m-auto flex h-[144px] flex-col rounded-t-lg   bg-background font-inter",
+        "fixed bottom-2	z-50 inset-x-2 m-auto flex h-[144px] flex-col rounded-t-lg   bg-background font-inter",
         className
       )}
       {...props}
