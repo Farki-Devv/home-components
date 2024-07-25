@@ -6,7 +6,7 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
-const DropdownMenu = DropdownMenuPrimitive.Root
+
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 
@@ -144,7 +144,17 @@ const DropdownMenuShortcut = ({
 	)
 }
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut"
+const DropdownMenu = DropdownMenuPrimitive.Root
+export type {
 
+	DropdownMenuContentProps,
+	DropdownMenuItemProps,
+	DropdownMenuCheckboxItemProps,
+	DropdownMenuRadioItemProps,
+	DropdownMenuLabelProps,
+	DropdownMenuSeparatorProps,
+
+}
 export {
 	DropdownMenu,
 	DropdownMenuTrigger,
